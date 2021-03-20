@@ -24,4 +24,4 @@ with open (csvpath, newline='') as csvfile:
 
 #print total months as rows
 print(f"Total Months: {row_count}")
-print(f"Net Profits: {total_profits}")
+print(f"Net Profits: ${total_profits}")
