@@ -35,7 +35,7 @@ profits_and_losses_no_last = profits_and_losses[:-1]
 new_profits_and_losses = list(zip(profits_and_losses_no_last, profits_and_losses_no_first))
 
 for set in new_profits_and_losses:
-    change = int(set[0]) + int(set[1])
+    change = int(set[1]) - int(set[0])
     change_in_profits.append(int(change))
 
 #print total months as rows
