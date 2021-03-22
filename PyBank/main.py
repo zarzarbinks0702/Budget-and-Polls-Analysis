@@ -50,15 +50,42 @@ for change in change_in_profits:
     #divide the sum by the length on the change_in_profits list to find the average change
     avg_change = sum_of_changes / len(change_in_profits)
 
-#duplicating the change_in_profits list so I can modify it
-sorted_change_in_profits = change_in_profits
-
-#sorting the copied list
-sorted_change_in_profits.sort()
+#sorting the change_in_profits list
+sorted_change_in_profits = sorted(change_in_profits)
 
 #defining the greatest increase and decrease in profits using the sorted_change_in_profits list
 greatest_increase = sorted_change_in_profits[-1]
 greatest_decrease = sorted_change_in_profits[0]
+
+#searching the original change_in_profits for the index of the changes
+for change in change_in_profits:
+    if change == greatest_increase:
+        #saves the index to a new variable
+        index_greatest_increase = change_in_profits.index(change)
+    elif change == greatest_decrease:
+        #saves the index to a new variable
+        index_greatest_decrease = change_in_profits.index(change)
+
+#change_in_profits is the same length as new_profits_and_losses - so the indicies are the same
+#finding the pair in new_profits_and_losses that matches the index of greatest_increase and greatest_decrease
+value_after_greatest_increase = new_profits_and_losses[index_greatest_increase][1]
+value_after_greatest_decrease = new_profits_and_losses[index_greatest_decrease][1]
+
+#going through the csv file to pull the change information
+with open (pybank_csv, newline='') as csvfile:
+     csvreader = csv.reader(csvfile, delimiter=",")
+     #pulls header row out
+     csv_header = next(csvreader)
+     #for each row in the csv file
+     for row in csvreader:
+         #looks for the value in the second column that matches the value after greatest_increase
+         if row[1] == value_after_greatest_increase:
+             #saves the row's date value to a variable
+             date_greatest_increase = row[0]
+         #looks for the value in the second column that matches the value after greatest_decrease
+         elif row[1] == value_after_greatest_decrease:
+             #saves the row's date value to a variable
+             date_greatest_decrease = row[0]
 
 #print total months as rows
 print(f"Total Months: {row_count}")
