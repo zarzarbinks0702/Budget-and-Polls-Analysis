@@ -101,7 +101,7 @@ print(f"Greatest Increase in Profits: {date_greatest_increase} (${greatest_incre
 print(f"Greatest Decrease in Profits: {date_greatest_decrease} (${greatest_decrease})")
 
 #writing the results to a txt file
-with open ('pybank_results.txt', 'w') as txtfile:
+with open ('Analysis\pybank_results.txt', 'w') as txtfile:
     txtfile.write(
     "Financial Analysis\n"
     "-------------------------------\n"
