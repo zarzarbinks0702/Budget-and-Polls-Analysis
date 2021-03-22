@@ -87,7 +87,6 @@ with open (pybank_csv, newline='') as csvfile:
              #saves the row's date value to a variable
              date_greatest_decrease = row[0]
 
-#printing the required text to the terminal
 print("Financial Analysis")
 print("-------------------------------")
 #print total months as rows
@@ -100,3 +99,14 @@ print(f"Average Change: ${round(avg_change, 2)}")
 print(f"Greatest Increase in Profits: {date_greatest_increase} (${greatest_increase})")
 #prints the greatest decrease in profits
 print(f"Greatest Decrease in Profits: {date_greatest_decrease} (${greatest_decrease})")
+
+#writing the results to a txt file
+with open ('pybank_results.txt', 'w') as txtfile:
+    txtfile.write(
+    "Financial Analysis\n"
+    "-------------------------------\n"
+    f"Total Months: {row_count}\n"
+    f"Total: ${total_profits}\n"
+    f"Average Change: ${round(avg_change, 2)}\n"
+    f"Greatest Increase in Profits: {date_greatest_increase} (${greatest_increase})\n"
+    f"Greatest Decrease in Profits: {date_greatest_decrease} (${greatest_decrease})\n")
