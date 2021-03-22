@@ -93,3 +93,7 @@ print(f"Total Months: {row_count}")
 print(f"Net Profits: ${total_profits}")
 #prints the average change in profits/Losses, rounded to 2 decimal places (since we're dealing with money)
 print(f"Average Change: ${round(avg_change, 2)}")
+#prints the greatest increase in profits
+print(f"Greatest Increase in Profits: {date_greatest_increase} (${greatest_increase})")
+#prints the greatest decrease in profits
+print(f"Greatest Decrease in Profits: {date_greatest_decrease} (${greatest_decrease})")
