@@ -87,10 +87,13 @@ with open (pybank_csv, newline='') as csvfile:
              #saves the row's date value to a variable
              date_greatest_decrease = row[0]
 
+#printing the required text to the terminal
+print("Financial Analysis")
+print("-------------------------------")
 #print total months as rows
 print(f"Total Months: {row_count}")
 #prints the net profits
-print(f"Net Profits: ${total_profits}")
+print(f"Total: ${total_profits}")
 #prints the average change in profits/Losses, rounded to 2 decimal places (since we're dealing with money)
 print(f"Average Change: ${round(avg_change, 2)}")
 #prints the greatest increase in profits
