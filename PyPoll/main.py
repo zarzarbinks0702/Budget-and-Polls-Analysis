@@ -5,7 +5,9 @@ import csv
 csvpath = os.path.join("Resources", "election_data.csv")
 
 #set initial value for row count, used to find the total number of votes cast
-row_count = 0
+vote_count = 0
+#set initial value for the candidate list
+candidates = []
 
 #open csv data file for pybank project and make it readable
 with open (csvpath, newline='') as csvfile:
@@ -14,8 +16,16 @@ with open (csvpath, newline='') as csvfile:
     csv_header = next(csvreader)
     #for each row in the csv file
     for row in csvreader:
-        #adds one to the row count for each row
-        row_count += 1
+        #adds one to the vote count for each row (one row = one vote)
+        vote_count += 1
+        #checks the value of the 3rd column is in the candidates list
+        if row[2] in candidates:
+            #does nothing if the name is already in the list
+            pass
+        #if the name is not in the candidates list
+        else:
+            #adds the name to the candidates list
+            candidates.append(row[2])
 
 #prints the total number of votes cast
-print(f"Total Votes Cast: {row_count}")
+print(f"Total Votes Cast: {vote_count}")
