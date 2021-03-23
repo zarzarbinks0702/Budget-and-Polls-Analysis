@@ -10,6 +10,9 @@ total_vote_count = 0
 candidates = []
 #stores the third column as a list
 all_vote_names = []
+#stores total individual vote counts in one list
+individual_vote_count = []
+
 #open csv data file for pybank project and make it readable
 with open (csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
@@ -37,9 +40,24 @@ with open (csvpath, newline='') as csvfile:
         percentage_votes = candidate_votes / total_vote_count * 100
         #prints the information to the console
         print(f"{candidates[candidate_index]}: {round(percentage_votes, 3)}% ({candidate_votes})")
+        #appends candidate_votes number to individual_vote_count list
+        individual_vote_count.append(candidate_votes)
 
+#prints the required information for the report
+print("Election Results")
+print("------------------------------")
 #prints the total number of votes cast
 print(f"Total Votes: {total_vote_count}")
+print("------------------------------")
 #prints the vote_count function for each candidate in the candidates list
 for each in range(len(candidates)):
-    print(vote_count(each))
+    vote_count(each)
+print("------------------------------")
+#since the vote_count function is based on the candidates list, the index of the candidate in cndidates should be the same as the index of their vote vcount in individual_vote_count
+#zip the individual_vote_count and candidate lists together in that order so that the sort function sorts it by the vote count, not alphabetically
+candidates_and_votes = list(zip(individual_vote_count, candidates))
+#sorts candidates_and_votes so that the
+candidates_and_votes.sort()
+#prints the last item in the last object of the new, sorted list, which is the winner's name
+print(f"Winner: {candidates_and_votes[-1][1]}")
+print("------------------------------")
