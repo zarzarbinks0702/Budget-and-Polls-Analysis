@@ -5,7 +5,7 @@ import csv
 pybank_csv = os.path.join("Resources", "budget_data.csv")
 
 #set the initial row count to 0 to determine the total number of months
-row_count = 0
+month_count = 0
 #set the initial value for total profits
 total_profits = 0
 #array for the values of the profits/losses column
@@ -21,7 +21,7 @@ with open (pybank_csv, newline='') as csvfile:
     #for each row in the csv file
     for row in csvreader:
         #adds one to the row count for each row
-        row_count += 1
+        month_count += 1
         #adds the profits/losses to previous total
         total_profits += int(row[1])
         #appends each value in the profits/losses column to the profits_and_losses array
@@ -90,7 +90,7 @@ with open (pybank_csv, newline='') as csvfile:
 print("Financial Analysis")
 print("-------------------------------")
 #print total months as rows
-print(f"Total Months: {row_count}")
+print(f"Total Months: {month_count}")
 #prints the net profits
 print(f"Total: ${total_profits}")
 #prints the average change in profits/Losses, rounded to 2 decimal places (since we're dealing with money)
@@ -105,7 +105,7 @@ with open ('Analysis\pybank_results.txt', 'w') as txtfile:
     txtfile.write(
     "Financial Analysis\n"
     "-------------------------------\n"
-    f"Total Months: {row_count}\n"
+    f"Total Months: {month_count}\n"
     f"Total: ${total_profits}\n"
     f"Average Change: ${round(avg_change, 2)}\n"
     f"Greatest Increase in Profits: {date_greatest_increase} (${greatest_increase})\n"
