@@ -43,7 +43,6 @@ with open (csvpath, newline='') as csvfile:
         #prints the information to the console
         return f"{candidates[candidate_index]}: {round(percentage_votes, 3)}% ({candidate_votes})"
 
-#prints the required information for the report
 print("Election Results")
 print("------------------------------")
 #prints the total number of votes cast
