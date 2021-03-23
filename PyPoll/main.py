@@ -36,12 +36,12 @@ with open (csvpath, newline='') as csvfile:
     def vote_count(candidate_index):
         #count how many times a candidate's name appears in the 3rd column (stored in the all_vote_names list)
         candidate_votes = all_vote_names.count(candidates[candidate_index])
+        #appends candidate_votes number to individual_vote_count list
+        individual_vote_count.append(candidate_votes)
         #uses vote_count and candidate_votes to find the percentage of votes
         percentage_votes = candidate_votes / total_vote_count * 100
         #prints the information to the console
-        print(f"{candidates[candidate_index]}: {round(percentage_votes, 3)}% ({candidate_votes})")
-        #appends candidate_votes number to individual_vote_count list
-        individual_vote_count.append(candidate_votes)
+        return f"{candidates[candidate_index]}: {round(percentage_votes, 3)}% ({candidate_votes})"
 
 #prints the required information for the report
 print("Election Results")
@@ -51,7 +51,7 @@ print(f"Total Votes: {total_vote_count}")
 print("------------------------------")
 #prints the vote_count function for each candidate in the candidates list
 for each in range(len(candidates)):
-    vote_count(each)
+    print(vote_count(each))
 print("------------------------------")
 #since the vote_count function is based on the candidates list, the index of the candidate in cndidates should be the same as the index of their vote vcount in individual_vote_count
 #zip the individual_vote_count and candidate lists together in that order so that the sort function sorts it by the vote count, not alphabetically
@@ -61,3 +61,19 @@ candidates_and_votes.sort()
 #prints the last item in the last object of the new, sorted list, which is the winner's name
 print(f"Winner: {candidates_and_votes[-1][1]}")
 print("------------------------------")
+
+#create a new txt document to print the results above to
+with open ('Analysis\pypoll_results.txt', 'w') as txtfile:
+    txtfile.write(
+    "Election Results\n"
+    "------------------------------\n"
+    f"Total Votes: {total_vote_count}\n"
+    "------------------------------\n"
+    #for this case, we know there are 4 candidates
+    f"{vote_count(0)}\n"
+    f"{vote_count(1)}\n"
+    f"{vote_count(2)}\n"
+    f"{vote_count(3)}\n"
+    "------------------------------\n"
+    f"Winner: {candidates_and_votes[-1][1]}\n"
+    "------------------------------\n")
