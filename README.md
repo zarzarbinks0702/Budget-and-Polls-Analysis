@@ -1,4 +1,4 @@
-# python-challenge
+# Budget-and-Polls-Analysis
 Beginner python project connected to class. Uses mostly basic python. 03/23/2021.
 
 ----------------------------------------------------
